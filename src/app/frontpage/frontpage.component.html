@@ -1,0 +1,8 @@
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
+  <app-card-list [pokemons]="pokemons"></app-card-list>
+</div>

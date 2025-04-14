@@ -1,0 +1,36 @@
+<div *ngIf="pokemons?.length; else no_pokemons" class="pokemon-list">
+  <div
+    *ngFor="let pokemon of pokemons"
+    class="pokemon-card"
+    (click)="openDialog(pokemon)"
+  >
+    <div class="pokemon">
+      <button
+        mat-icon-button
+        type="button"
+        class="favourite-icon"
+        (click)="toggleFavourite(pokemon); $event.stopPropagation()"
+      >
+        <mat-icon
+          *ngIf="pokemon.Favourite; else not_favourite"
+          fontIcon="favorite"
+        ></mat-icon>
+        <ng-template #not_favourite
+          ><mat-icon fontIcon="favorite_outline"></mat-icon
+        ></ng-template>
+      </button>
+      <img
+        src="sprites/sprites/pokemon/{{ pokemon.Id }}.png"
+        alt="{{ pokemon.Name }}"
+        width="200"
+        height="200"
+        class="pokemon-image"
+      />
+    </div>
+    <label class="pokemon-name">
+      {{ pokemon.Name }}
+    </label>
+    <label>{{ pokemon.Id }}</label>
+  </div>
+</div>
+<ng-template #no_pokemons><div>No Pokemons were found.</div></ng-template>

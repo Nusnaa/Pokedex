@@ -1,0 +1,29 @@
+<div class="details">
+  <h2 mat-dialog-title>{{ pokemon.Name }}{{ pokemon.Id }}</h2>
+  <mat-dialog-content>
+    <div class="pokemon">
+      <button
+        mat-icon-button
+        type="button"
+        class="favourite-icon"
+        (click)="toggleFavourite(pokemon); $event.stopPropagation()"
+      >
+        <mat-icon
+          *ngIf="pokemon.Favourite; else not_favourite"
+          fontIcon="favorite"
+        ></mat-icon>
+        <ng-template #not_favourite
+          ><mat-icon fontIcon="favorite_outline"></mat-icon
+        ></ng-template>
+      </button>
+      <img
+        src="sprites/sprites/pokemon/{{ pokemon.Id }}.png"
+        alt="{{ pokemon.Name }}"
+        width="200"
+        height="200"
+        class="pokemon-image"
+      />
+    </div>
+    <div>show more info here</div>
+  </mat-dialog-content>
+</div>

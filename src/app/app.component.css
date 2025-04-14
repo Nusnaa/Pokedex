@@ -1,0 +1,9 @@
+.header {
+    background-color: gray;
+}
+
+.sidenav {
+    padding: 20px;
+    width: 10%;
+    min-width: 200px;
+}
