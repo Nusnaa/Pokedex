@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/Pokedex',
+  basePath: 'https://nusnaa.github.io/Pokedex',
   supportedLocales: {
   "en-US": ""
 },
