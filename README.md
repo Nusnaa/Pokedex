@@ -19,7 +19,7 @@ npm install
 ### Run the development server
 
 ```bash
-ng serve
+ng serve OR npm run start
 ```
 
 ### Go to URL
