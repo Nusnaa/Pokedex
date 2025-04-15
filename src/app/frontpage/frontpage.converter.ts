@@ -8,7 +8,6 @@ export const convertPokemon = (pokemon: any): Pokemon => {
   return {
     Id: pokemon['id'] || pokemon['url']?.split('/')?.at(-2),
     Name: pokemon['name'],
-    Url: pokemon['url'],
     Favourite: false,
   };
 };

@@ -1,5 +1,6 @@
 .details {
-    height: 80vh;
+    height: fit-content;
+    width: fit-content;
 }
 
 .header {
@@ -38,6 +39,18 @@
     gap: 10px;
 }
 
-.description-label {
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.label {
     font-weight: bold;
+}
+
+.specific-info {
+    display: grid;
+    grid-template-columns: 200px auto;
+    column-gap: 20px;
 }

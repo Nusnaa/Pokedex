@@ -49,6 +49,7 @@ export class CardListComponent {
   openDialog(pokemon: Pokemon) {
     this.dialog.open(DetailsComponent, {
       data: pokemon,
+      width: '80vw',
     });
   }
 

@@ -29,8 +29,27 @@
         />
       </div>
       <div class="description">
-        <label class="description-label">Description</label
+        <label class="label">Description</label
         ><label>{{ pokemon.Description }}</label>
+        <div class="chips">
+          <mat-chip *ngFor="let type of pokemon.Types">{{ type }}</mat-chip>
+        </div>
+      </div>
+    </div>
+    <div class="specific-info">
+      <div>
+        <label class="label">Stats</label>
+        <div *ngFor="let stat of pokemon.Stats">
+          <label>{{ stat.Name }}</label>
+          <mat-progress-bar
+            matTooltip="{{ getBaseStatTooltip(stat) }}"
+            mode="determinate"
+            value="{{ getBaseStatValue(stat) }}"
+          ></mat-progress-bar>
+        </div>
+      </div>
+      <div class="chips">
+        <mat-chip *ngFor="let move of pokemon.Moves">{{ move }}</mat-chip>
       </div>
     </div>
   </mat-dialog-content>
