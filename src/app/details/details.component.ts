@@ -45,7 +45,6 @@ export class DetailsComponent implements OnInit {
     this.subscriptions.push(
       this.detailsService.getPokemonById(this.pokemon).subscribe((result) => {
         this.pokemon = result;
-        console.log(this.pokemon);
       })
     );
   }

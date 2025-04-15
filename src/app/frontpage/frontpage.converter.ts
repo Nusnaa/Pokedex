@@ -5,9 +5,11 @@ export const convertPokemonList = (list: any): Pokemon[] => {
 };
 
 export const convertPokemon = (pokemon: any): Pokemon => {
+  const id = pokemon['id'] || pokemon['url']?.split('/')?.at(-2);
   return {
-    Id: pokemon['id'] || pokemon['url']?.split('/')?.at(-2),
+    Id: id,
     Name: pokemon['name'],
     Favourite: false,
+    Image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
   };
 };
