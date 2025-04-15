@@ -1,4 +1,43 @@
 .details {
     height: 80vh;
-    width: 150vw;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 30px;
+}
+
+.header-name {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.pokemon {
+    position: relative;
+}
+
+.pokemon-image {
+    border: solid 1px black;
+}
+
+.favourite-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.generic-info {
+    display: flex;
+    gap: 10px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.description-label {
+    font-weight: bold;
 }

@@ -1,1 +1,4 @@
-<app-card-list [pokemons]="pokemons"></app-card-list>
+<app-card-list
+  [pokemons]="pokemons"
+  (onSearch)="onSearch($event)"
+></app-card-list>

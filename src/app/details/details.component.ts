@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PokemonDetails } from './details.model';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { DetailsService } from './details.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -18,18 +20,33 @@ import { CommonModule } from '@angular/common';
   styleUrl: './details.component.css',
 })
 export class DetailsComponent implements OnInit {
-  readonly dialogRef = inject(MatDialogRef<DetailsComponent>);
-  readonly data = inject<Pokemon>(MAT_DIALOG_DATA);
+  constructor(private detailsService: DetailsService) {}
+
   private _snackBar = inject(MatSnackBar);
 
+  readonly dialogRef = inject(MatDialogRef<DetailsComponent>);
+  readonly data = inject<Pokemon>(MAT_DIALOG_DATA);
+
   pokemon: PokemonDetails = this.data;
+  subscriptions: Subscription[] = [];
 
   ngOnInit() {
-    console.log(this.pokemon);
+    this.subscriptions.push(
+      this.detailsService.getPokemonById(this.pokemon).subscribe((result) => {
+        this.pokemon = result;
+      })
+    );
   }
 
-  toggleFavourite(pokemon: Pokemon) {
-    pokemon.Favourite = !pokemon.Favourite;
-    this._snackBar.open(`${pokemon.Name} is added to your favourite list`);
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe);
+  }
+
+  toggleFavourite() {
+    this.data.Favourite = !this.data.Favourite;
+    const snackbarText = `${this.data.Name} is ${
+      this.data.Favourite ? 'added to' : 'removed from'
+    } your favourite list`;
+    this._snackBar.open(snackbarText, '', { duration: 5000 });
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
 import { Pokemon } from '../card-list/card-list.model';
-import { convertPokemonList } from './frontpage.converter';
+import { convertPokemon, convertPokemonList } from './frontpage.converter';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +29,11 @@ export class FrontpageService {
       tap((result) => (this.nextUrl = result['next'])),
       map((result) => convertPokemonList(result))
     );
+  }
+
+  getPokemonByText(text: string): Observable<Pokemon> {
+    return this.http
+      .get<any>('https://pokeapi.co/api/v2/pokemon/' + text)
+      .pipe(map((result) => convertPokemon(result)));
   }
 }

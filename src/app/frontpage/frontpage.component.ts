@@ -19,12 +19,14 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   ) {}
 
   pokemons: Pokemon[] = [];
+  originalPokemons!: Pokemon[];
   subscriptions: Subscription[] = [];
 
   ngOnInit() {
     this.subscriptions.push(
       this.frontpageService.getPokemonByInterval().subscribe((pokemons) => {
         this.pokemons = [...this.pokemons, ...pokemons];
+        this.originalPokemons = this.pokemons;
         this.setFavourites();
       })
     );
@@ -38,6 +40,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.frontpageService.getNextPokemon().subscribe((nextPokemons) => {
         this.pokemons = [...this.pokemons, ...nextPokemons];
+        this.originalPokemons = this.pokemons;
         this.setFavourites();
       })
     );
@@ -53,5 +56,18 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         match.Favourite = true;
       }
     });
+  }
+
+  onSearch(text: string) {
+    if (text) {
+      this.subscriptions.push(
+        this.frontpageService.getPokemonByText(text).subscribe((result) => {
+          this.pokemons = [result];
+          this.setFavourites();
+        })
+      );
+    } else {
+      this.pokemons = this.originalPokemons;
+    }
   }
 }

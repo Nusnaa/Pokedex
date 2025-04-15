@@ -1,3 +1,10 @@
+<div class="search-bar">
+  <mat-form-field appearance="outline">
+    <mat-label>Search by name or id</mat-label>
+    <input matInput [(ngModel)]="searchText" (keydown.enter)="search()" />
+    <mat-icon matSuffix (click)="search()">search</mat-icon>
+  </mat-form-field>
+</div>
 <div *ngIf="pokemons?.length; else no_pokemons" class="pokemon-list">
   <div
     *ngFor="let pokemon of pokemons"

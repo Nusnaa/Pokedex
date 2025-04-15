@@ -4,5 +4,10 @@
   [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
-  <app-card-list [pokemons]="pokemons"></app-card-list>
+  <div>
+    <app-card-list
+      [pokemons]="pokemons"
+      (onSearch)="onSearch($event)"
+    ></app-card-list>
+  </div>
 </div>
