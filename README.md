@@ -21,3 +21,9 @@ npm install
 ```bash
 ng serve
 ```
+
+### Go to URL
+
+```bash
+http://localhost:4200/Pokedex/
+````
