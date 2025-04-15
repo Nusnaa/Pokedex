@@ -8,6 +8,7 @@ export const convertPokemonDetails = (result: any): Partial<PokemonDetails> => {
 
 export const convertPokemonStats = (result: any): Partial<PokemonDetails> => {
   return {
+    Image: result['sprites']['front_default'],
     Stats: result['stats'].map((stat: any) => convertStat(stat)),
     Types: result['types'].map((type: any) => type['type']['name']),
     Moves: result['moves']
